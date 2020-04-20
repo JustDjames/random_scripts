@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# get time pc has been on
+UPTIME=$(uptime -s | awk '{print $2}')
+UPTIMESEC=$(date -d $UPTIME '+%s')
+# TEST=$(date -u -d $UPTIME)
+# echo $TEST
+
+# 8 hours in seconds
+SHIFT=28800
+
+
+# get current time
+CURRENT=$(date +'%T')
+CURRENTSEC=$(date +'%s')
+
+# calculate at what time i can stop and calculate how long until that time in seconds
+HOME=$(($UPTIMESEC+$SHIFT))
+DIFF=$(($HOME-$CURRENTSEC))
+
+echo "Current time is $CURRENT"
+echo "You started at $UPTIME"
+if [ "$DIFF" -gt 0 ]
+then
+    # difference in hours, minutes and seconds 
+    DIFFHR=$((DIFF/60/60%24))
+    DIFFMIN=$((DIFF/60%60))
+    DIFFSEC=$((DIFF%60))
+    echo "You have $DIFFHR hours, $DIFFMIN minutes and $DIFFSEC seconds"
+    echo "Just a bit more..."
+else
+    echo "Time's up!"
+fi
