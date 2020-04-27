@@ -6,8 +6,8 @@ UPTIMESEC=$(date -d $UPTIME '+%s')
 # TEST=$(date -u -d $UPTIME)
 # echo $TEST
 
-# 8 hours in seconds
-SHIFT=28800
+# 2 hours in seconds
+SHIFT=7200
 
 
 # get current time
