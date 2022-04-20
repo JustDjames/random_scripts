@@ -11,6 +11,7 @@ This repo is a place to hold random scripts i have created for fun or to help me
 
 - [ksd](https://github.com/mfuentesg/ksd): quick way to decode k8s secrets
 - [iterm2](https://iterm2.com/): good replacement terminal for macOS
+- [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh): framework for managing your zsh configuration (requires zsh to be installed)
 
 ## Useful VSCode extensions
 
