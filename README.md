@@ -21,14 +21,20 @@ This repo is a place to hold random scripts i have created for fun or to help me
 - markdownlint: useful for linting markdown documentation
 - vscode-icons: more icons for different file types
 - YAML: adds YAML language support
+- Docker: adds Dockerfile support
 
 ## .zshrc useful functions, alias' and autocomplete
 
 kubectl autocomplete and alias:
 
 ```bash
+source <(kubectl completion zsh)
 alias k="kubectl"
 complete -F __start_kubectl k
+
+# use if you have installed kubectx and kubens
+alias kx="kubectx"
+alias kn="kubens"
 ```
 
 prune: removes all git local git branches apart from the current branch and the main branch
@@ -40,15 +46,25 @@ prune(){
 }
 ```
 
-rebase: checkouts the main branch, pulls any upstream changes, checkout current branch and rebases from main branch
+rebase: checkouts the specified branch (uses main/master by default), pulls any upstream changes, checkouts current branch and rebases from specified branch
 
 ```bash
 rebase(){
-    branch=$(git branch | grep '*' | awk '{print $2}')
+    my_branch=$(git branch | grep '*' | awk '{print $2}')
     main=$(git remote show origin | grep 'HEAD branch' | awk '{print $3}')
-    git checkout $main 
+
+    if [[ -z $1 ]]
+    then
+        echo "no branch specified. using main/master"
+        base_branch=$main
+    else
+        echo "using branch: $1"
+        base_branch=$1
+    fi
+
+    git checkout $base_branch 
     git pull
-    git checkout $branch
-    git rebase $main
+    git checkout $my_branch
+    git rebase $base_branch
 }
 ```
