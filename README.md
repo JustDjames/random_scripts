@@ -25,7 +25,7 @@ This repo is a place to hold random scripts i have created for fun or to help me
 
 ## .zshrc useful functions, alias' and autocomplete
 
-kubectl autocomplete and alias:
+### kubectl autocomplete and alias
 
 ```bash
 source <(kubectl completion zsh)
@@ -37,7 +37,9 @@ alias kx="kubectx"
 alias kn="kubens"
 ```
 
-prune: removes all git local git branches apart from the current branch and the main branch
+### prune
+
+removes all git local git branches apart from the current branch and the main branch
 
 ```bash
 prune(){
@@ -46,7 +48,9 @@ prune(){
 }
 ```
 
-rebase: checkouts the specified branch (uses main/master by default), pulls any upstream changes, checkouts current branch and rebases from specified branch
+### rebase
+
+checkouts the specified branch (uses main/master by default), pulls any upstream changes, checkouts current branch and rebases from specified branch
 
 ```bash
 rebase(){
